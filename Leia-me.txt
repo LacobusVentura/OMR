@@ -1,0 +1,97 @@
+***********************************************************************
+*                                                                     *
+*                         EuCorrijo.com                               *
+*                                                                     *
+*                     Software Processador OMR                        *
+*                                                                     *
+*                  Versao CEM404 / 2o Bim / 2016                      *
+*                                                                     *
+*       ESPECIFICACAO DO LAYOUT DOS ARQUIVOS DE ENTRADA E SAIDA       *
+*                                                                     *
+***********************************************************************
+*      $Id: Leia-me.txt 464 2016-07-10 03:12:49Z tiago.ventura $      *
+***********************************************************************
+
+
+A) ARQUIVO DE GABARITO (ENTRADA) [CSV separado por ';']
+
+	COLUNAS: ID_OBJETO;TIPO_OBJETO;GABARITO;ROI_X,ROI_Y 
+
+		1) Identificador do Objeto.
+
+		2) Tipo do Objeto (Ver Apêndice I).
+
+		3) Resposta Correta (Gabarito).
+
+		4) Coordenada X do Objeto na ROI (0-29).
+
+		5) Coordenada Y do Objeto na ROI (0-25).
+
+
+B) ARQUIVO DE SAIDA [CSV separado por ';']
+
+
+	COLUNAS: IMAGEM;GABARITO;ID_OBJETO;TIPO_OBJETO;ACERTO;LEITURA/STATUS 
+
+		1) IMAGEM: Nome do arquivo de imagem processado.
+		
+		2) GABARITO: Nome do arquivo de gabarito usado no processamento da imagem.
+		
+		3) ID_OBJETO: Identificador do objeto analisado.
+		
+		4) TIPO_OBJETO: Tipo do objeto analisado (Ver Apêndice I).
+		
+		5) ACERTO: Indica se houve o acerto da questão (somente no caso de objetos de questões).
+		
+		6) LEITURA/STATUS: Status da Marcação / Leitura (Ver Apêndice II).
+
+
+APENDICE I) TIPOS DE OBJETOS
+
+	1) Barra de Clock: 
+	
+		Id: 'CLK'
+		Dimensão do Objeto 1x30
+		Células válidas: 30
+		Domínio: ['OK','INV']
+	
+	2) Identificador do Cartão:
+		
+		Id: 'ID'
+		Dimensão do Objeto 1x16
+		Células válidas: 15
+		Domínio: 0-32767
+	
+	3) Questão do Tipo A:
+	
+		Id: 'A'
+		Dimensão do Objeto 3x1
+		Células válidas: 2
+		Domínio ['C','E','NP','INV','ERR'] 
+	
+	4) Questão do Tipo B:
+	
+		Id: 'B'
+		Dimensão do Objeto 4x12
+		Células válidas: 30
+		Domínio '000'-'999'
+	
+	5) Questão do Tipo C:
+	
+		Id: 'C'
+		Dimensão do Objeto 5x1
+		Células válidas: 4
+		Domínio: ['A','B','C','D','NP','INV','ERR']
+
+
+APENDICE II) LEGENDA DA LEITURA/STATUS
+
+	ERR = Erro de Detecção
+	
+	NP = Não Preenchido
+	
+	INV = Preenchimento Inválido / Rasurado
+
+
+***********************************************************************
+*** $Id: Leia-me.txt 464 2016-07-10 03:12:49Z tiago.ventura $ ***
